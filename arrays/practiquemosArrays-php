@@ -1,0 +1,11 @@
+<?php
+
+$madrid = 10;
+$barcelona = 20;
+$avila = 30;
+
+echo "Madrid: $madrid";
+echo "Barcelona: $barcelona";
+echo "Avila: $avila";
+
+?>

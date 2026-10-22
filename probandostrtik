@@ -1,0 +1,8 @@
+<?php
+$string = '\var\'
+$tok = strtok ($string, '\');
+
+while ( $tok. '=false) {
+    echo 'tok'. $ 
+}
+?>
