@@ -1,29 +1,41 @@
-```html
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Subir fotografía</title>
-</head>
 
+<?php
+
+if (isset($_POST['enviar'])) {
+
+    echo "Nombre de usuario: " . $_POST['usuario'];
+    echo "<br>";
+
+    echo "Nombre de su fotografía: " . $_FILES['foto']['name'];
+
+} else {
+
+?>
+
+<html>
 <body>
 
-    <form action="subeFichero.php" method="POST" enctype="multipart/form-data">
+    Inserción de la fotografía del usuario:
 
-        <label>Nombre de usuario: </label>
-        <input type="text" name="usuario" required>
-        <br><br>
+    <form action="" method="post" enctype="multipart/form-data">
 
-        <label>Selecciona tu fotografía:</label>
-        <input type="text" name="foto" accept="image/*" required>
-        <br><br>
+        Nombre de usuario:
+        <input type="text" name="usuario">
+        <br>
 
-        <input type="submit" value="Enviar">
+        Nombre de su fotografía:
+        <input type="file" name="foto">
+        <br>
+
+        <input type="submit" name="enviar" value="Enviar">
 
     </form>
 
 </body>
-
 </html>
-```
+
+<?php
+}
+?>
+
