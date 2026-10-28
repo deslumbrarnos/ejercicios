@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_POST['enviar'])) {
-    // Si se ha enviado el formulario, procesamos los datos
+
     echo "Nombre de usuario: " . $_POST['usuario'];
     echo "<br>";
 
@@ -11,7 +11,23 @@ if (isset($_POST['enviar'])) {
     echo "Sexo: " . $_POST['sexo'];
     echo "<br>";
 
+    echo "Correo: " . $_POST['correo'];
+    echo "<br>";
+
+    echo "Clave: " . $_POST['clave'];
+    echo "<br>";
+
+    echo "Color: " . $_POST['color'];
+    echo "<br>";
+
     echo "Aficción favorita: " . $_POST['aficcion'];
+    echo "<br>";
+
+    if (isset($_POST['idiomas'])) {
+        foreach ($_POST['idiomas'] as $idioma) {
+            echo "Idioma: " . $idioma . "<br>";
+        }
+    }
 
 } else {
 
@@ -27,19 +43,37 @@ if (isset($_POST['enviar'])) {
     echo "Sexo:<br>";
 
     echo '<input type="radio" name="sexo" value="M"> Mujer<br>';
-
     echo '<input type="radio" name="sexo" value="H"> Hombre<br>';
 
-    echo '<br> Aficción favorita: </br>';
+    echo '<br>Aficción favorita:<br>';
 
-    echo '<input type= "radio" name="aficcion" value="deporte"> Deporte<br>';
+    echo '<input type="radio" name="aficcion" value="deporte"> Deporte<br>';
+    echo '<input type="radio" name="aficcion" value="musica"> Música<br>';
 
-    echo '<input type= "radio" name="aficcion" VALUE="musica"> Musica<br>';
+    echo '<input type="hidden" name="correo" value="siulee1626@gmail.com"><br>';
+
+    echo "Password:<br>";
+    echo '<input type="password" name="clave"><br>';
+
+    echo 'Color:';
+
+    echo '<select name="color">';
+    echo '<option value="rojo" selected>Rojo</option>';
+    echo '<option value="verde">Verde</option>';
+    echo '<option value="azul">Azul</option>';
+    echo '</select><br>';
+
+    echo 'Idiomas:';
+
+    echo '<select name="idiomas[]" multiple>';
+    echo '<option value="español" selected>Español</option>';
+    echo '<option value="ingles">Inglés</option>';
+    echo '<option value="frances">Francés</option>';
+    echo '</select><br>';
 
     echo '<input type="submit" name="enviar" value="Enviar">';
 
-    echo '
-    </form>
+    echo '</form>
     </body>
     </html>';
 
