@@ -24,8 +24,14 @@ if (isset($_POST['enviar'])) {
     echo "<br>";
 
     if (isset($_POST['idiomas'])) {
-        foreach ($_POST['idiomas'] as $idioma) {
-            echo "Idioma: " . $idioma . "<br>";
+    foreach ($_POST['idiomas'] as $idioma) {
+        echo "Idioma: " . $idioma . "<br>";
+        }
+    }
+
+    if (isset($_POST['extras'])) {
+    foreach ($_POST['extras'] as $extra) {
+        echo "Extra: " . $extra . "<br>";
         }
     }
 
@@ -70,6 +76,12 @@ if (isset($_POST['enviar'])) {
     echo '<option value="ingles">Inglés</option>';
     echo '<option value="frances">Francés</option>';
     echo '</select><br>';
+
+    echo 'Extras:';
+    
+    echo '<input type="checkbox" name="extras[]" value="garaje" checked> Garaje';
+    echo '<input type="checkbox" name="extras[]" value="piscina"> Piscina';
+    echo '<input type="checkbox" name="extras[]" value="jardin"> Jardín';
 
     echo '<input type="submit" name="enviar" value="Enviar">';
 
