@@ -1,87 +1,36 @@
 <?php
 
-// Función para calcular el dinero ahorrado
+// Función para calcular el dinero acumulado después de varios años
 function calculaCantidad($anos, $cantidad, $interes) {
+
+    // Calculamos el capital final aplicando el interés compuesto
     $cantidadFinal = $cantidad * pow(1 + $interes / 100, $anos);
 
+    // Devolvemos el resultado
     return round($cantidadFinal, 2);
 }
 
-// Comprobamos si se ha enviado el formulario
-if (isset($_POST['calcular'])) {
+echo '<h1>Práctica 5: Formularios y Funciones</h1>';
 
-    $cantidad = $_POST['cantidad'];
-    $interes = $_POST['interes'];
-    $anos = $_POST['anos'];
+echo calculaCantidad(5, 100, 5);
+echo ' &#x20AC; en cinco años.</p>';
 
-    // Calculamos el importe final
-    $resultado = calculaCantidad($anos, $cantidad, $interes);
+$interes = 5;
 
-    // Calculamos el beneficio obtenido
-    $ganancia = $resultado - $cantidad;
-}
+echo '<p><b>El interés actual es: </b>' . $interes . '%</p>';
+
+echo '<p>Si usted deposita 100 &#x20AC; hoy sus ahorros crecerán a: <b>'
+    . (100 + (100 * $interes / 100))
+    . ' &#x20AC;</b> en un año.</p>';
+
+echo calculaCantidad(5, 100, $interes);
+echo ' &#x20AC; en cinco años.</p>';
+
+echo '<p>Si usted deposita 1.500 &#x20AC; hoy sus ahorros crecerán a: <b>'
+    . (1500 + (1500 * $interes / 100))
+    . ' &#x20AC;</b> en un año.</p>';
+
+echo calculaCantidad(20, 1500, $interes);
+echo ' &#x20AC; en veinte años.</p>';
+
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Calculadora de ahorros</title>
-</head>
-
-<body>
-
-    <h1>Calculadora de ahorros</h1>
-
-    <form method="POST" action="">
-
-        <label for="cantidad">Cantidad inicial (€):</label>
-        <input type="number" id="cantidad" name="cantidad"
-               min="0.01" step="0.01" required>
-
-        <br><br>
-
-        <label for="interes">Interés anual (%):</label>
-        <input type="number" id="interes" name="interes"
-               min="0" step="0.01" value="5" required>
-
-        <br><br>
-
-        <label for="anos">Número de años:</label>
-        <input type="number" id="anos" name="anos"
-               min="1" max="100" step="1" value="5" required>
-
-        <br><br>
-
-        <input type="submit" name="calcular" value="Calcular ahorro">
-
-    </form>
-
-    <?php
-
-    // Mostramos los resultados si se ha enviado el formulario
-    if (isset($_POST['calcular'])) {
-
-        echo '<h2>Resultado del ahorro</h2>';
-
-        echo '<p>Dinero inicial: <b>'
-            . number_format($cantidad, 2, ',', '.') . ' €</b></p>';
-
-        echo '<p>Interés anual: <b>'
-            . $interes . ' %</b></p>';
-
-        echo '<p>Tiempo de ahorro: <b>'
-            . $anos . ' años</b></p>';
-
-        echo '<p>Importe final: <b>'
-            . number_format($resultado, 2, ',', '.') . ' €</b></p>';
-
-        echo '<p>Ganancia obtenida: <b>'
-            . number_format($ganancia, 2, ',', '.') . ' €</b></p>';
-    }
-
-    ?>
-
-</body>
-</html>
